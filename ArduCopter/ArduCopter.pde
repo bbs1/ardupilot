@@ -1,6 +1,6 @@
 /// -*- tab-width: 4; Mode: C++; c-basic-offset: 4; indent-tabs-mode: nil -*-
 
-#define THISFIRMWARE "ArduCopter V3.2.1"
+#define THISFIRMWARE "ArduCopter V3.2.1 Mot Fail Sim"
 /*
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1605,6 +1605,10 @@ static void tuning(){
         
     case CH6_RATE_ROLL_KD:
         g.pid_rate_roll.kD(tuning_value);
+        break;
+        
+    case CH6_MOTOR_FAIL_PCT:
+        motors.set_motor_fail_pct(g.rc_6.control_in / 10);
         break;
     }
 }
